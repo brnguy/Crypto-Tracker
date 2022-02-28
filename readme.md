@@ -1,14 +1,14 @@
 # NFT COLLECTION TRACKER
 
-A platform listing the top NFT collections of each blockchain using the Covalent API, where users can track their favorite collections
+#### A platform listing the top NFT collections of each blockchain using the Covalent API. The user will be able to get additional details and images by clicking on the collection as well as add them to their Favorites page where they can track them.
 ---
-### Technologies Used
-Front-End: HTML, CSS, JavaScript
-Back-End: SQL, Node, Express
-API: Covalent
+## Technologies Used
+#### Front-End: HTML, CSS, JavaScript
+#### Back-End: SQL, Node, Express
+#### API: Covalent
 ---
-### ERDS
-
+## ERDS
+![ERD](ERD.svg)
 ---
 ### RESTful Routing Chart
 |VERB|URL PATTERN|ACTION|DESCRIPTION|
@@ -24,14 +24,17 @@ API: Covalent
 |DELETE|/user/favorites|Remove(Delete)|Remove NFT collection from Favorites|
 |GET|/user/logout|Logout(Read)|Logout of account|
 ---
-### Wireframes
-
+## Wireframes
+### Home/Favorites Page </br>
+![Imgur](https://i.imgur.com/Fa1VvZZl.jpg)
+### NFT Collection Details Page </br>
+![Imgur](https://i.imgur.com/eLthvIOl.jpg)
 ---
-### User Stories
+## User Stories
 - As a user, I want to see the most popular NFT collections so I can stay up to date on the latest trends
 - As a user, I want to keep track of my favorite NFT collections so I can keep track of their activity
 ---
-### MVP Goals
+## MVP Goals
 - Successful connection to Covalent API and importing data
 - Home Page with list of NFT collections for each blockchain
 - Pages for each specific NFT collection with more details
@@ -39,7 +42,7 @@ API: Covalent
 - New Account/Login Page with option to logout once logged in
 - Ability to remove NFT collection from user’s Favorites page
 ---
-### Stretch Goals
+## Stretch Goals
 - Add Reddit/Twitter latest posts/tweets to NFT collection pages
 - A Favorites page for posts/tweets
 - Add Sorting and Filters/Search Bar
