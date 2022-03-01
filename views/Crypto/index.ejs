@@ -1,6 +1,13 @@
+<link rel="stylesheet" href="../public/css/style.css"/>
 <% let dollarUSLocale = Intl.NumberFormat('en-US') %>
 
 <h1>Crypto Index Page</h1>
+
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
 
 <table>
     <tr>
@@ -14,7 +21,7 @@
     <% cryptoList.forEach(element => { %>
         <% if(element.type_is_crypto === 1 && element.price_usd) { %>
             <tr>
-                <td><%= element.name %></td>
+                <td><a href="/cryptos/<%= element.asset_id %>"><%= element.name %></a></td>
                 <td><%= element.asset_id %></td>
                 <td>$<%= dollarUSLocale.format(element.price_usd) %></td>
                 <td>$<%= dollarUSLocale.format(element.volume_1hrs_usd) %></td>
