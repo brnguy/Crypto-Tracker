@@ -1,8 +1,6 @@
 {
   "development": {
-    "username": "nft-tracker",
-    "password": null,
-    "database": "database_development",
+    "database": "crypto_tracker",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
