@@ -1,7 +1,7 @@
 {
-  "name": "project2",
+  "name": "NFT-Tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "---\r ## Technologies Used\r #### Front-End: HTML, CSS, JavaScript\r #### Back-End: SQL, Node, Express\r #### API: Covalent\r ---\r ## ERDS\r ![ERD](ERD.svg)\r ---\r ### RESTful Routing Chart\r |VERB|URL PATTERN|ACTION|DESCRIPTION|\r |----|-----------|------|-----------|\r |GET|/|Index(Read)|List of all NFT collections|\r |GET|/:id|Show(Read)|List details about a specific NFT collection|\r |PUT|/:id|Add(Update)|Add NFT collection to Favorites|\r |GET|/user/new|New(Read)|Shows form to create a new account|\r |POST|/user/new|Create(Create)|Creates a new account|\r |GET|/user/login|Login(Read)|Shows form to login|\r |POST|/user/login|Authorization(Create)|Create authorization to login to account|\r |GET|/user/favorites|Favorites(Read)|List of favorited NFT collections|\r |DELETE|/user/favorites|Remove(Delete)|Remove NFT collection from Favorites|\r |GET|/user/logout|Logout(Read)|Logout of account|\r ---\r ## Wireframes\r ### Home/Favorites Page </br>\r ![Imgur](https://i.imgur.com/Fa1VvZZl.jpg)\r ### NFT Collection Details Page </br>\r ![Imgur](https://i.imgur.com/eLthvIOl.jpg)\r ---\r ## User Stories\r - As a user, I want to see the most popular NFT collections so I can stay up to date on the latest trends\r - As a user, I want to keep track of my favorite NFT collections so I can keep track of their activity\r ---\r ## MVP Goals\r - Successful connection to Covalent API and importing data\r - Home Page with list of NFT collections for each blockchain\r - Pages for each specific NFT collection with more details\r - Add to Favorites button to add to the user’s Favorites page\r - New Account/Login Page with option to logout once logged in\r - Ability to remove NFT collection from user’s Favorites page\r ---\r ## Stretch Goals\r - Add Reddit/Twitter latest posts/tweets to NFT collection pages\r - A Favorites page for posts/tweets\r - Add Sorting and Filters/Search Bar\r - Add “My Collection” tab to see collection in user’s wallet",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,9 +10,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.0",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
-    "express-ejs-layouts": "^2.5.1"
-  }
+    "express-ejs-layouts": "^2.5.1",
+    "pg": "^8.7.3",
+    "sequelize": "^6.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brnguy/NFT-Tracker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brnguy/NFT-Tracker/issues"
+  },
+  "homepage": "https://github.com/brnguy/NFT-Tracker#readme"
 }
