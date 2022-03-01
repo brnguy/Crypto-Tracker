@@ -13,14 +13,10 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 
-
 app.get('/', (req, res) => {
-    const url = `https://rest.coinapi.io/v1/assets/?apikey=${process.env.COINAPI_KEY}&output_format=json`
-    axios.get(url)
-        .then(response => {
-            console.log(response.data)
-        })
+    res.send('Home Page')
 })
+
 
 // CONTROLLERS
 app.use('/users', require('./controllers/userController'))
