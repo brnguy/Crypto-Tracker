@@ -1,23 +1,30 @@
 const express = require('express')
 const ejsLayouts = require('express-ejs-layouts')
-const app = express()
+const { get } = require('express/lib/response')
 require('dotenv').config()
 const db = require('./models/index.js')
+const axios = require('axios')
 
+const app = express()
 const PORT = process.env.PORT || 3000
 
 // MIDDLEWARE
-app.set('view engine', 'ejs')
-app.use(ejsLayouts)
-app.use(express.urlencoded({extended: false}))
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: false }));
+app.use(ejsLayouts);
+
 
 app.get('/', (req, res) => {
-    res.send('Hello')
+    const url = `https://rest.coinapi.io/v1/assets/?apikey=${process.env.COINAPI_KEY}&output_format=json`
+    axios.get(url)
+        .then(response => {
+            console.log(response.data)
+        })
 })
 
 // CONTROLLERS
-app.use('/user', require('./controllers/user'))
-app.use('/crypto', require('./controllers/crypto'))
+app.use('/users', require('./controllers/userController'))
+app.use('/cryptos', require('./controllers/cryptoController'))
 
 app.listen(PORT, function() {
     console.log('SERVER IS LIVE')
