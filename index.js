@@ -14,9 +14,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 
 app.get('/', (req, res) => {
-    res.send('Home Page')
+    res.render('home.ejs')
 })
-
 
 // CONTROLLERS
 app.use('/users', require('./controllers/userController'))
