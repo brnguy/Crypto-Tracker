@@ -1,6 +1,6 @@
-# NFT COLLECTION TRACKER
+# CRYPTOCURRENCY TRACKER
 
-#### A platform following the top cryptocurrency market where the user can keep track of their favorite assets as well as add/edit their positions in those assets
+#### A platform following the top cryptocurrency market where the user can keep track of their favorite cryptocurrencies as well as add/edit their positions in those assets
 ---
 ## Technologies Used
 #### Front-End: HTML, CSS, JavaScript
