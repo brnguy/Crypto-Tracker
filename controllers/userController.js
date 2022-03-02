@@ -2,6 +2,8 @@ let express = require('express')
 let db = require('../models')
 let router = express.Router()
 const axios = require('axios')
+const bcrypt = require('bcrypt')
+const cryptojs = require('crypto-js')
 
 router.get('/', (req, res) => {
     res.send('User Page')
