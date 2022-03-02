@@ -71,7 +71,9 @@ router.get('/portfolio', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-    res.send('Logged Out')
+    console.log('logging out')
+    res.clearCookie('userId')
+    res.redirect('/')
 })
 
 module.exports = router
