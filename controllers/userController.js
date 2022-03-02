@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/new', (req, res) => {
-    res.render('users/new')
+    res.render('user/new')
 })
 
 router.post('/', async (req, res) => {
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('users/login.ejs')
+    res.render('user/login.ejs')
 })
 
 router.post('/login', async (req, res) => {
