@@ -1,16 +1,16 @@
 let express = require('express')
-let db = require('../models')
 let router = express.Router()
-const axios = require('axios')
+const db = require('../models')
 const bcrypt = require('bcrypt')
 const cryptojs = require('crypto-js')
+require('dotenv').config()
 
 router.get('/', (req, res) => {
     res.send('User Page')
 })
 
 router.get('/new', (req, res) => {
-    res.render('./user/new')
+    res.render('users/new')
 })
 
 router.post('/', async (req, res) => {
@@ -38,19 +38,19 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('./user/login')
+    res.render('users/login.ejs')
 })
 
 router.post('/login', async (req, res) => {
     const user = await db.user.findOne({where: {email: req.body.email}})
     if(!user) {
         console.log('user not found')
-        res.render('users/login.ejs', {error: 'Invalid email/password'})
+        res.render('users/login', {error: 'Invalid email/password'})
     } else if(!bcrypt.compareSync(req.body.password, user.password)) {
         console.log('Incorrect Password')
-        res.render('users/login.ejs', {error: 'Invalid email/password'})
+        res.render('users/login', {error: 'Invalid email/password'})
     } else {
-        console.log('loggin in the user!')
+        console.log('logging in the user!')
         // encrypt the user id via AES
         const encryptedUserId = cryptojs.AES.encrypt(user.id.toString(), process.env.SECRET)
         const encryptedUserIdString = encryptedUserId.toString()
@@ -63,11 +63,11 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/favorites', (req, res) => {
-    res.render('./user/favorites')
+    res.render('users/favorites')
 })
 
 router.get('/portfolio', (req, res) => {
-    res.render('./user/portfolio')
+    res.render('users/portfolio')
 })
 
 router.get('/logout', (req, res) => {
