@@ -15,7 +15,7 @@ router.get('/new', (req, res) => {
 
 router.post('/', async (req, res) => {
     const [newUser, created] = await db.user.findOrCreate({
-        where: {email: req.body.email}
+        where: {email: req.body.email} //// If/else statement to check username then email?
     })
     if(!created){
         console.log('User already exists')
