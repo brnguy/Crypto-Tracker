@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.cryptocurrency.belongsTo(models.user)
+      models.cryptocurrency.belongsTo(models.position)
     }
   }
   cryptocurrency.init({

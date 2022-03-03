@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      asset: {
+        type: Sequelize.STRING
+      },
       amount: {
         type: Sequelize.FLOAT
       },
