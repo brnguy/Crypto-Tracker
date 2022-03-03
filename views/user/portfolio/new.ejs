@@ -1,11 +1,17 @@
 <h1>Add a Position</h1>
 
-<form action="/portfolio" method="POST">
-    <label for="name">Email:</label>
-    <input type="email" name="email" id="email">
+<form action="/users/portfolio" method="POST">
+    <label for="asset">Cryptocurrency</label>
+    <input type="string" name="asset" id="asset">
 
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password">
+    <label for="purchaseDate">Purchase Date:</label>
+    <input type="date" name="purchaseDate" id="purchaseDate">
+    
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" id="quantity">
+    
+    <label for="purchasePrice">Purchase Price:</label>
+    <input type="number" name="purchasePrice" id="purchasePrice">
 
-    <button type="submit">Log In</button>
+    <button type="submit">Submit</button>
 </form>

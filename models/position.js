@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model, FLOAT
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class position extends Model {
@@ -17,9 +17,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   position.init({
     asset: DataTypes.STRING,
-    amount: DataTypes.FLOAT,
+    quantity: DataTypes.FLOAT,
+    purchasePrice: DataTypes.FLOAT,
     purchaseDate: DataTypes.DATEONLY,
-    cryptoId: DataTypes.INTEGER,
+    amount: DataTypes.FLOAT,
     userId: DataTypes.INTEGER
   }, {
     sequelize,

@@ -4,6 +4,9 @@ const db = require('../models')
 const bcrypt = require('bcrypt')
 const cryptojs = require('crypto-js')
 const Op = require('Sequelize').Op
+const axios = require('axios')
+const { sequelize } = require('../models')
+const { user } = require('pg/lib/defaults')
 require('dotenv').config()
 
 
@@ -73,11 +76,33 @@ router.get('/portfolio', (req, res) => {
 })
 
 router.get('/portfolio/new', (req, res) => {
-    res.render('user/portfolio/new')
+    const url = `https://rest.coinapi.io/v1/assets/?apikey=${process.env.COINAPI_KEY}`
+    axios.get(url)
+        .then(response => {
+            let cryptoList = response.data
+            res.render('user/portfolio/new', { cryptoList: cryptoList })
+        })
+})
+
+router.post('/portfolio', async (req, res) => {
+    db.position.create({
+            asset: req.body.asset,
+            quantity: req.body.quantity,
+            purchasePrice: req.body.purchasePrice,
+            purchaseDate: req.body.purchaseDate,
+            amount: (req.body.quantity * req.body.purchasePrice),
+            userId: db.user.id
+    })
+    res.render('user/portfolio/index')
 })
 
 router.get('/portfolio/edit', (req, res) => {
-    res.render('user/portfolio/edit')
+    const url = `https://rest.coinapi.io/v1/assets/?apikey=${process.env.COINAPI_KEY}`
+    axios.get(url)
+        .then(response => {
+            let cryptoList = response.data
+            res.render('user/portfolio/edit', { cryptoList: cryptoList })
+        })
 })
 
 router.get('/logout', (req, res) => {

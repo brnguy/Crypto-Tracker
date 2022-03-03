@@ -11,14 +11,17 @@ module.exports = {
       asset: {
         type: Sequelize.STRING
       },
-      amount: {
+      quantity: {
+        type: Sequelize.FLOAT
+      },
+      purchasePrice: {
         type: Sequelize.FLOAT
       },
       purchaseDate: {
         type: Sequelize.DATEONLY
       },
-      cryptoId: {
-        type: Sequelize.INTEGER
+      amount: {
+        type: Sequelize.FLOAT
       },
       userId: {
         type: Sequelize.INTEGER
