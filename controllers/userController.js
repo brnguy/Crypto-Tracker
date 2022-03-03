@@ -3,7 +3,9 @@ let router = express.Router()
 const db = require('../models')
 const bcrypt = require('bcrypt')
 const cryptojs = require('crypto-js')
+const Op = require('Sequelize').Op
 require('dotenv').config()
+
 
 router.get('/', (req, res) => {
     res.send('User Page')
@@ -15,7 +17,7 @@ router.get('/new', (req, res) => {
 
 router.post('/', async (req, res) => {
     const [newUser, created] = await db.user.findOrCreate({
-        where: {email: req.body.email} //// If/else statement to check username then email?
+        where: {email: req.body.email} // find or create username too
     })
     if(!created){
         console.log('User already exists')
@@ -45,10 +47,10 @@ router.post('/login', async (req, res) => {
     const user = await db.user.findOne({where: {email: req.body.email}})
     if(!user) {
         console.log('user not found')
-        res.render('users/login', {error: 'Invalid email/password'})
+        res.render('user/login', {error: 'Invalid email/password'})
     } else if(!bcrypt.compareSync(req.body.password, user.password)) {
         console.log('Incorrect Password')
-        res.render('users/login', {error: 'Invalid email/password'})
+        res.render('user/login', {error: 'Invalid email/password'})
     } else {
         console.log('logging in the user!')
         // encrypt the user id via AES
@@ -63,11 +65,19 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/favorites', (req, res) => {
-    res.render('users/favorites')
+    res.render('user/favorites')
 })
 
 router.get('/portfolio', (req, res) => {
-    res.render('users/portfolio')
+    res.render('user/portfolio/index')
+})
+
+router.get('/portfolio/new', (req, res) => {
+    res.render('user/portfolio/new')
+})
+
+router.get('/portfolio/edit', (req, res) => {
+    res.render('user/portfolio/edit')
 })
 
 router.get('/logout', (req, res) => {
