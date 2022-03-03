@@ -4,3 +4,21 @@
     <li><a href="./portfolio/new">New Position</a></li>
 </ul>
 
+<table>
+    <tr>
+        <th>Cryptocurrency</th>
+        <th>Purchase Date</th>
+        <th>Purchase Price</th>
+        <th>Quantity</th>
+        <th>Total Value</th>
+    </tr>
+    <% positions.forEach(element => { %>
+        <tr>
+            <td><%= element.asset %></td>
+            <td><%= element.purchaseDate %></td>
+            <td>$<%= element.purchasePrice %></td>
+            <td>$<%= element.quantity %></td>
+            <td>$<%= element.amount %></td>
+        </tr>
+    <% }) %>
+</table>

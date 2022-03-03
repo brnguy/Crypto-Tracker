@@ -71,8 +71,9 @@ router.get('/favorites', (req, res) => {
     res.render('user/favorites')
 })
 
-router.get('/portfolio', (req, res) => {
-    res.render('user/portfolio/index')
+router.get('/portfolio', async (req, res) => {
+    const positions = await db.position.findAll()
+    res.render('user/portfolio/index', {positions: positions})
 })
 
 router.get('/portfolio/new', (req, res) => {
