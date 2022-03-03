@@ -1,3 +1,9 @@
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
+
 <h1>Portfolio Page</h1>
 
 <ul>
@@ -11,6 +17,8 @@
         <th>Purchase Price</th>
         <th>Quantity</th>
         <th>Total Value</th>
+        <th> </th>
+        <th> </th>
     </tr>
     <% positions.forEach(element => { %>
         <tr>
@@ -19,6 +27,8 @@
             <td>$<%= element.purchasePrice %></td>
             <td>$<%= element.quantity %></td>
             <td>$<%= element.amount %></td>
+            <td><a href="./portfolio/edit">Edit</a></td>
+            <td><a href="./portfolio/delete">Delete</a></td>
         </tr>
     <% }) %>
 </table>
