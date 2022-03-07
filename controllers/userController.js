@@ -10,6 +10,7 @@ const { user } = require('pg/lib/defaults')
 require('dotenv').config()
 const methodOverride = require('method-override')
 const fs = require('fs')
+const position = require('../models/position')
 
 
 router.get('/', (req, res) => {
@@ -69,8 +70,16 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.get('/favorites', (req, res) => {
-    res.render('user/favorites')
+router.get('/favorites', async (req, res) => {
+    favorites = await db.cryptocurrency.findAll()
+    res.render('user/favorites', {favorites: favorites})
+})
+
+router.post('/favorites/:id', (req, res) => {
+    db.cryptocurrency.findOrCreate({
+        where: {assetId: req.params.id}
+    })
+    res.redirect('/users/favorites')
 })
 
 router.get('/portfolio', async (req, res) => {
@@ -83,14 +92,20 @@ router.get('/portfolio/new', (req, res) => {
 })
 
 router.post('/portfolio', async (req, res) => {
-    db.position.create({
-            asset: req.body.asset,
-            quantity: req.body.quantity,
-            purchasePrice: req.body.purchasePrice,
-            purchaseDate: req.body.purchaseDate,
-            amount: (req.body.quantity * req.body.purchasePrice),
-            userId: db.user.id
-    })
+    try{
+        const foundUser = await db.user.findOne({
+            where: {id: user}
+        })
+        await foundUser.createPosition({
+                asset: req.body.asset,
+                quantity: req.body.quantity,
+                purchasePrice: req.body.purchasePrice,
+                purchaseDate: req.body.purchaseDate,
+                amount: (req.body.quantity * req.body.purchasePrice),
+        })
+    } catch (err) {
+        console.log(err)
+    }
     res.redirect('/users/portfolio')
 })
 

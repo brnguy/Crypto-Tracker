@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.position.belongsTo(models.user)
-      models.position.hasMany(models.cryptocurrency)
     }
   }
   position.init({
