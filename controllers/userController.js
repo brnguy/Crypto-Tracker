@@ -8,6 +8,8 @@ const axios = require('axios')
 const { sequelize } = require('../models')
 const { user } = require('pg/lib/defaults')
 require('dotenv').config()
+const methodOverride = require('method-override')
+const fs = require('fs')
 
 
 router.get('/', (req, res) => {
@@ -97,14 +99,27 @@ router.post('/portfolio', async (req, res) => {
     res.render('user/portfolio/index')
 })
 
-router.get('/portfolio/edit', (req, res) => {
-    const url = `https://rest.coinapi.io/v1/assets/?apikey=${process.env.COINAPI_KEY}`
-    axios.get(url)
-        .then(response => {
-            let cryptoList = response.data
-            res.render('user/portfolio/edit', { cryptoList: cryptoList })
-        })
+router.get('/portfolio/:id/edit', async (req, res) => {
+    const position = await db.position.findOne({
+        where: {id: req.params.id}
+    })
+    res.render('user/portfolio/edit', {position: position})
 })
+
+router.put('/portfolio/:id', (req, res) => {
+    db.position.update({
+        asset: req.body.asset,
+        quantity: req.body.quantity,
+        purchasePrice: req.body.purchasePrice,
+        purchaseDate: req.body.purchaseDate,
+        amount: (req.body.quantity * req.body.purchasePrice)
+    },
+    {
+        where: {id: req.params.id}
+    })
+    res.redirect('/users/portfolio')
+})
+
 
 router.get('/logout', (req, res) => {
     console.log('logging out')

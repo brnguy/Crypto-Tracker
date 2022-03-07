@@ -1,1 +1,17 @@
 <h1>Edit Position</h1>
+
+<form action="/users/portfolio/<%=position.id%>/?_method=PUT" method="POST">
+    <label for="asset">Cryptocurrency</label>
+    <input type="string" name="asset" id="asset" value="<%= position.asset %>">
+
+    <label for="purchaseDate">Purchase Date:</label>
+    <input type="date" name="purchaseDate" id="purchaseDate" value="<%= position.purchaseDate %>">
+    
+    <label for="quantity">Quantity:</label>
+    <input type="number" name="quantity" id="quantity" value="<%= position.quantity %>">
+    
+    <label for="purchasePrice">Purchase Price:</label>
+    <input type="number" name="purchasePrice" id="purchasePrice" value="<%= position.purchasePrice %>">
+
+    <button type="submit">Submit</button>
+</form>

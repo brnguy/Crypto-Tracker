@@ -5,6 +5,8 @@ require('dotenv').config()
 const cookieParser = require('cookie-parser')
 const cryptoJS = require('crypto-js')
 const db = require('./models/index.js')
+const methodOverride = require('method-override')
+const fs = require('fs')
 
 const PORT = process.env.PORT || 3000
 
@@ -12,7 +14,9 @@ const PORT = process.env.PORT || 3000
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 app.use(cookieParser())
+app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: false }))
+
 
 // CUSTOM LOGIN MIDDLEWARE
 app.use(async (req, res, next)=>{
