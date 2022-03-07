@@ -79,12 +79,7 @@ router.get('/portfolio', async (req, res) => {
 })
 
 router.get('/portfolio/new', (req, res) => {
-    const url = `https://rest.coinapi.io/v1/assets/?apikey=${process.env.COINAPI_KEY}`
-    axios.get(url)
-        .then(response => {
-            let cryptoList = response.data
-            res.render('user/portfolio/new', { cryptoList: cryptoList })
-        })
+    res.render('user/portfolio/new')
 })
 
 router.post('/portfolio', async (req, res) => {
@@ -96,7 +91,7 @@ router.post('/portfolio', async (req, res) => {
             amount: (req.body.quantity * req.body.purchasePrice),
             userId: db.user.id
     })
-    res.render('user/portfolio/index')
+    res.redirect('/users/portfolio')
 })
 
 router.get('/portfolio/:id/edit', async (req, res) => {
