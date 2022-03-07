@@ -101,6 +101,13 @@ router.get('/portfolio/:id/edit', async (req, res) => {
     res.render('user/portfolio/edit', {position: position})
 })
 
+router.delete('/portfolio/:id', async (req, res) => {
+    await db.position.destroy({
+        where: {id: req.params.id}
+    })
+    res.redirect('/users/portfolio')
+})
+
 router.put('/portfolio/:id', (req, res) => {
     db.position.update({
         asset: req.body.asset,
