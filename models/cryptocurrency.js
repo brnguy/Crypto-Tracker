@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   cryptocurrency.init({
-    name: DataTypes.STRING,
     assetId: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
