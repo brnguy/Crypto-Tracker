@@ -3,7 +3,6 @@ let router = express.Router()
 const db = require('../models')
 const bcrypt = require('bcrypt')
 const cryptojs = require('crypto-js')
-const Op = require('Sequelize').Op
 const axios = require('axios')
 const { sequelize } = require('../models')
 const { user } = require('pg/lib/defaults')
