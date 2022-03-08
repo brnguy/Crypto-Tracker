@@ -27,11 +27,13 @@
                 <td>$<%= dollarUSLocale.format(element.volume_1hrs_usd) %></td>
                 <td>$<%= dollarUSLocale.format(element.volume_1day_usd) %></td>
                 <td>$<%= dollarUSLocale.format(element.volume_1mth_usd) %></td>
-                <td>
-                    <form method="POST" action="/users/favorites/<%= element.asset_id %>">
-                        <input type="submit" value="Add to Favorites">
-                    </form>
-                </td>
+                <% if(user) { %>
+                    <td>
+                        <form method="POST" action="/users/favorites/<%= element.asset_id %>">
+                            <input type="submit" value="Add to Favorites">
+                        </form>
+                    </td>
+                <% } %>
             </tr>
        <% } %>
     <% }) %>
