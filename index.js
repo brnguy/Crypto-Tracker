@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser')
 const cryptoJS = require('crypto-js')
 const db = require('./models/index.js')
 const methodOverride = require('method-override')
-const fs = require('fs')
 
 const PORT = process.env.PORT || 3000
 

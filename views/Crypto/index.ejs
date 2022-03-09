@@ -19,7 +19,7 @@
         <th>Previous Month Volume</th>
     </tr>
     <% cryptoList.forEach(element => { %>
-        <% if(element.type_is_crypto === 1 && element.price_usd) { %>
+        <% if(element.type_is_crypto === 1 && element.price_usd && element.volume_1hrs_usd !== 0) { %>
             <tr>
                 <td><a href="/cryptos/<%= element.asset_id %>"><%= element.name %></a></td>
                 <td><%= element.asset_id %></td>

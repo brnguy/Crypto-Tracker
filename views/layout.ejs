@@ -17,6 +17,7 @@
         </ul>
         <ul>
             <% if(user) { %>
+                <li><%= user.email %></li>
                 <li><a href="/users/favorites">Favorites</a></li>
                 <li><a href="/users/portfolio">Portfolio</a></li>
                 <li><a href="/users/logout">Logout</a></li>
