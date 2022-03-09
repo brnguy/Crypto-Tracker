@@ -71,7 +71,7 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/favorites', async (req, res) => {
-    favorites = await db.cryptocurrency.findAll()
+    let favorites = await db.cryptocurrency.findAll()
     res.render('user/favorites', {favorites: favorites})
 })
 
