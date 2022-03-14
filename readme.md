@@ -1,12 +1,32 @@
 # CRYPTOCURRENCY TRACKER
 
 #### A platform following the top cryptocurrency market where the user can keep track of their favorite cryptocurrencies as well as add/edit their positions in those assets
+
+#### Deployment Link: [Crypto-Tracker](https://git.heroku.com/bn-crypto-tracker.git)
+---
+## User Stories
+- As a user, I want to see the most popular cryptocurrencies to keep up with the trends
+- As a user, I want to keep track of my favorite cryptocurrencies to keep track of them
+- As a user, I want to have a place to add my positions to see the progress of my portfolio 
 ---
 ## Technologies Used
 #### Front-End: HTML, CSS, JavaScript
 #### Back-End: SQL, Node, Express
 #### API: CoinAPI
 ---
+## Installation Instructions
+- Fork and clone repository
+- Run `npm i`
+- Run `createdb crypto_tracker`
+- Run `sequelize db:migrate` to create tables
+- Go to [CoinAPI](https://www.coinapi.io/) to get a free API key
+- Create a `.env` file and copy the keys to the file
+- Your `.env` file should look like below: </br>
+```
+COINAPI_KEY=YOUR-API-KEY-HERE
+SECRET=ANY-WORD-OR-PHRASE-HERE
+```
+___
 ## ERDS
 ![ERD](ERD.svg)
 ---
@@ -30,11 +50,6 @@
 ---
 ## Wireframes
 ![Imgur](https://i.imgur.com/ZKqUacy.jpg)
----
-## User Stories
-- As a user, I want to see the most popular cryptocurrencies to keep up with the trends
-- As a user, I want to keep track of my favorite cryptocurrencies to keep track of them
-- As a user, I want to have a place to add my positions to see the progress of my portfolio 
 ---
 ## MVP Goals
 - Successful connection to CoinAPI and importing data
